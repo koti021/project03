@@ -21,7 +21,7 @@ pipeline {
         WELCOME_PAGE_PATH = './index.html' // Path to your index.html in the repo
         CONTAINER_PATH = '/usr/share/nginx/html/index.html' // Nginx document root
     }
-
+# stage1 (downloding the git )
     stages {
         stage('Checkout Code') {
             steps {
@@ -31,7 +31,7 @@ pipeline {
                 }
             }
         }
-
+# stage2 (building one docker default image)
         stage('Build Docker Image') {
             steps {
                 script {
@@ -39,7 +39,7 @@ pipeline {
                 }
             }
         }
-
+#stage 3 (if any container is there romoved)
         stage('Remove Existing Container') {
             steps {
                 script {
@@ -51,7 +51,7 @@ pipeline {
                 }
             }
         }
-
+#stage 4(from stage 2 image creting one container)
         stage('Run New Container') {
             steps {
                 script {
@@ -59,7 +59,7 @@ pipeline {
                 }
             }
         }
-
+#stage 5 (for that local container it will updated welcome page)
         stage('Update Welcome Page') {
             steps {
                 script {
@@ -68,7 +68,7 @@ pipeline {
                 }
             }
         }
-
+# stage 6 (copy index.html file and push in docker file)
         stage('Tag Image as Latest') {
             steps {
                 script {
