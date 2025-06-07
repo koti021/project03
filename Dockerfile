@@ -13,7 +13,7 @@ WORKDIR /usr/share/nginx/html
 RUN curl -o index.html https://raw.githubusercontent.com/koti021/project03/main/index.html
 
 # Expose port 80 for Nginx 
-EXPOSE 80 
+EXPOSE 8080
 
 # Start Nginx in the foreground (daemon off) 
 CMD ["nginx", "-g", "daemon off;"]
